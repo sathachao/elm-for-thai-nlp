@@ -1,0 +1,34 @@
+# Example from Git Extension
+#ignore thumbnails created by windows
+Thumbs.db
+#Ignore files build by Visual Studio
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+
+# Default Ignores
+*.obj
+*.exe
+*.pdb
+*.tlb
+*.tlh
+*.lib
+[Tt]est[Rr]esult*
+
+# PyCharm
+__pycache__*/
