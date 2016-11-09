@@ -1,0 +1,12 @@
+<body bgcolor="FFDA89"><center><table><tr><td><font color = blue><b>ฒ</font></b></td><td>พยัญชนะตัวที่ ๑๘ นับเป็นพวกอักษรตํ่า ใช้เป็นตัวสะกดในแม่กด</td></tr><tr><td></td> <td>ในคําที่มาจากภาษาบาลีและสันสกฤต เช่น วัฒน์ วุฒิ.</td></tr><tr><td></td></tr><tr><td></td></tr><tr><td><font color = blue><b>เฒ่า</font></b></td><td>ว. แก่, มีอายุมาก, เถ้า ก็ใช้.</td></tr><tr><td></td> <td><font color="blue"><b>เฒ่าแก่</b></font>  น. ตําแหน่งข้าราชการฝ่ายในในพระราชสำนัก; ผู้ใหญ่ที่เป็น</td></tr><tr><td></td> <td>ประธานในการสู่ขอและการหมั้น, เถ้าแก่ ก็ใช้.</td></tr><tr><td></td> <td><font color="blue"><b>เฒ่าหัวงู</b></font>  น. คนแก่หรือคนมีอายุมากที่มีเล่ห์เหลี่ยมหรือกลอุบายหลอก</td></tr><tr><td></td> <td>เด็กผู้หญิงในทางกามารมณ์, คนแก่เจ้าเล่ห์.</td></tr><tr><td></td></tr><tr><td></td></tr></table></center></body><html>
+<head><title> พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๔๒ </title>
+</head>
+<body bgcolor=99ccff >
+
+
+
+</body>
+</html> 
+
+
+

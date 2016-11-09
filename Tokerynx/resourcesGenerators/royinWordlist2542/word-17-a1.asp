@@ -1,0 +1,10 @@
+<body bgcolor="FFDA89"><center><table><tr><td><font color = blue><b>ณ ๑</b></font></td><td>พยัญชนะตัวที่ ๑๙ นับเป็นพวกอักษรตํ่า ใช้เป็นตัวสะกดในแม่กน</td></tr><tr><td></td> <td>ในคําที่มาจากภาษาบาลีและสันสกฤต เช่น คุณ บัณฑิต.</td></tr><tr><td></td></tr><tr><td></td></tr><tr><td><font color = blue><b>ณ ๒</b></font></td><td>[นะ] บ. ใน, ที่, เป็นคําบ่งเวลาหรือสถานที่ว่า ตรงนั้นตรงนี้, ถ้าใช้</td></tr><tr><td></td> <td>นําหน้าสกุล หมายความว่า แห่ง เช่น ณ อยุธยา ณ ระนอง.</td></tr><tr><td></td></tr><tr><td></td></tr><tr><td><font color = blue><b>ณรงค์</b></font></td><td>ก. ต่อสู้ชิงชัย เช่น ณรงค์เพื่อต่อต้านวัณโรค.  น. การรบ, การต่อสู้. </td></tr><tr><td></td> <td>(ตัดมาจาก รณรงค์).</td></tr><tr><td></td></tr><tr><td></td></tr><tr><td><font color = blue><b>เณร</b></font></td><td>น. สามเณร.</td></tr><tr><td></td> <td><font color="blue"><b>เณรหน้าไฟ</b></font>  น. สามเณรที่บวชเนื่องในพิธีเผาศพ.</td></tr><tr><td></td> <td><font color="blue"><b>เณรหางนาค</b></font>  น. สามเณรที่บวชต่อท้ายพิธีบวชพระ.</td></tr><tr><td></td></tr><tr><td></td></tr></table></center></body><html>
+<head><title> พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๔๒ </title>
+</head>
+<body bgcolor=99ccff >
+
+
+
+</body>
+</html> 
+
