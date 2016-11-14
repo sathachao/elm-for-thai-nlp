@@ -4,6 +4,6 @@ import datasets.myDataset
 
 dataset = {}
 dataset.update(datasets.orchidCorpusDataset.dataset)
-dataset.update(datasets.myDataset.dataset)
+# dataset.update(datasets.myDataset.dataset)
 
-print(len(dataset))
+# print(len(dataset))

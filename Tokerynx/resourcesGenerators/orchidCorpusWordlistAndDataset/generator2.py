@@ -19,7 +19,8 @@ for dataset in data:
     while dataset[idx][-2:] == '//' or dataset[idx][-2:] == '\\\\':
         originalText += dataset[idx][:-2]
         idx += 1
-    if len(dataset) > 10:
+    # print(dataset, len(dataset[idx:-1]))
+    if len(dataset[idx:-1]) > 8:
         continue
     while dataset[idx] != '//':
         text = re.findall(r'.*[\/@]', dataset[idx])[0][:-1]
@@ -80,19 +81,19 @@ for dataset in data:
         elif text == '<at_mark>NCMN':
              text = '@'
         elif text[:1] == '<':
-            print(dataset, text, 'Warning: text[:1] == \'<\', validFlag set to False')
+            # print(dataset, text, 'Warning: text[:1] == \'<\', validFlag set to False')
             validFlag = False
             break
         elif text == 'ถี่':
-            print(dataset, text, 'Warning: text[:1] == \'<\', validFlag set to False')
+            # print(dataset, text, 'Warning: text[:1] == \'<\', validFlag set to False')
             validFlag = False
             break
         elif len(text) <= 1 and not text.isdigit():
-            print(dataset, text, 'Warning: len(text) <= 1 and not text.isdigit(), validFlag set to False')
+            # print(dataset, text, 'Warning: len(text) <= 1 and not text.isdigit(), validFlag set to False')
             validFlag = False
             break
         elif text not in wordlist:
-            print(dataset, text, 'Warning: text not in wordlist, validFlag set to False')
+            # print(dataset, text, 'Warning: text not in wordlist, validFlag set to False')
             validFlag = False
             break
         tokenizedText += text

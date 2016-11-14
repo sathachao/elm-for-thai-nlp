@@ -11,4 +11,4 @@ wordlist = sorted(wordlist)
 symbollist = [' ', '.', ',', '/', '(', ')', '=', '+', '-', ':', ';', '\'',
               '"', '$', '?', '&', '#', '*', '>', '<', '^', '!', '{', '}', '@']
 
-print('การ' in wordlist)
+# print(len(wordlist))
