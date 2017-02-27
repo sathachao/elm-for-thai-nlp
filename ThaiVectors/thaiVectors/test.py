@@ -52,4 +52,6 @@ for word in sentence:
     print('ไหน', word, model.similarity('ไหน', word))
     print('เวลา', word, model.similarity('เวลา', word))
     print('สิ่งของ', word, model.similarity('สิ่งของ', word))
-# print(model['คอม'])
+x = model['คอม']
+y = x.tolist()
+print(y)

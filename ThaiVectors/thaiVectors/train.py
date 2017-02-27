@@ -1,4 +1,4 @@
-from datasets.sentences import sentences
+from ThaiVectors.datasets.sentences import sentences
 
 # from pprint import pprint
 
