@@ -11,6 +11,8 @@ def generateNGram(wordSeq, model, left=2, right=2, limit=50000):
 
     count = 0
 
+
+
     for document in wordSeq:
         for i in range(len(document)):
             if count > limit:
@@ -21,33 +23,37 @@ def generateNGram(wordSeq, model, left=2, right=2, limit=50000):
             for j in range(left, 0, -1):
                 if i - j < 0:
                     # x += [const.BLANK]
-                    x += [zeroes]
-                    y += [0]
+                    x += [0.]
+                    # y += [0]
                 else:
                     # x += [document[i-j][0]]
                     x += model[document[i - j][0]].tolist()
-                    y += [document[i-j][1]]
+                    # y += [document[i-j][1]]
             # x += [document[i][0]]
             x += model[document[i][0]].tolist()
             y += [document[i][1]]
             for j in range(1, right + 1):
                 if i + j >= len(document):
                     # x += [const.BLANK]
-                    x += [zeroes]
-                    y += [0]
+                    x += [0.]
+                    # y += [0]
                 else:
                     # x += [document[i + j][0]]
                     x += model[document[i + j][0]].tolist()
-                    y += [document[i + j][1]]
+                    # y += [document[i + j][1]]
 
             X += [x]
             Y += [y]
+
+            # Write to file
+
+
     return [X, Y]
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 model = gensim.models.Word2Vec.load('../thaiVectors/vectors_0.0.1.model')
 
-nnIO = generateNGram(wordSeq=documents, model=model)
+nnIO = generateNGram(wordSeq=documents, model=model, limit=1000)
 
 print("nnIO is generated...")
