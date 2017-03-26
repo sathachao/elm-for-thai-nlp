@@ -8,7 +8,10 @@ class Lis:
     def __init__(self):
         self.actions = instructions.actions
         self.components = instructions.components
+
+        # create thaivectors folder and put the model at root
         self.model = gensim.models.Word2Vec.load('thaivectors/vectors_0.0.1.model')
+
         self.tokenizer = Tokenizian(dictionary=list(self.model.vocab))
         self.action = None
         self.component = None
