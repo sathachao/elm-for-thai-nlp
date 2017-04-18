@@ -1,4 +1,4 @@
-from ThaiVectors.datasets.sentences import sentences
+from datasets.sentences import sentences
 
 # from pprint import pprint
 
@@ -14,7 +14,7 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=lo
 # gensim.corpora.MmCorpus.serialize('vectors_0.0.1.mm', corpus)
 # pprint(corpus)
 
-model = gensim.models.Word2Vec(sentences, size=200, window=5, min_count=1, workers=4)
-model.save('vectors_0.0.1.model')
+model = gensim.models.Word2Vec(sentences, size=10, window=5, min_count=1, workers=4)
+model.save('vectors_0.0.1_10.model')
 
 print(model)
