@@ -1,6 +1,6 @@
 import codecs
 import glob
-import ThaiVectors.datasets.constants as const
+import datasets.constants as const
 
 filelist = []
 filelist += glob.glob('../resources/article/*.txt')
