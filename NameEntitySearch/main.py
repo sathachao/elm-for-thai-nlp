@@ -28,6 +28,7 @@ class NameEntitySearch(ttk.Frame):
         demoPanel.pack(side=TOP)
 
         self.txt_panel(demoPanel)
+        self.search_panel(demoPanel)
 
     def reset_highlight(self):
         self.text.tag_remove('search', 0.0, END)
@@ -49,7 +50,7 @@ class NameEntitySearch(ttk.Frame):
                                 orient=HORIZONTAL)
         yscroll = ttk.Scrollbar(txtFrame, command=self.text.yview,
                                 orient=VERTICAL)
-        self.text.configure(xscrollcommand=xscroll.set, yscrollcommand=yscroll.set)
+        self.text.configure(xscrollcommand=xscroll.set, yscrollcommand=yscroll.set, font=("Courier", 16))
 
         # configure 'search' style tag
         self.text.tag_configure('search', background='yellow')
@@ -65,10 +66,18 @@ class NameEntitySearch(ttk.Frame):
         #
         # self.text.insert(END, txt)
 
-        self.text.bind('<KeyRelease>', lambda evt: self.updateText(evt))
+        # self.text.bind('<KeyRelease>', lambda evt: self.updateText(evt))
         self.text.event_add('<<Paste>>', '<Control-v>')
+        self.text.event_add('<<Copy>>', '<Control-c>')
 
-    def updateText(self, evt):
+    def search_panel(self, parent):
+        f = ttk.Frame(parent)
+        f.pack(side=TOP)
+
+        btn = ttk.Button(text='Search', command=self.updateText)
+        btn.pack(in_=f, side=TOP, padx=10, pady=10)
+
+    def updateText(self, evt=None):
         raw_text = self.text.get('1.0', 'end-1c')
         if raw_text == self.prevText:
             return
@@ -88,6 +97,7 @@ class NameEntitySearch(ttk.Frame):
         left = 2
         right = 2
         for i in range(len(document)):
+            x = []
             for j in range(left, 0, -1):
                 if i - j < 0:
                     # x += [const.BLANK]
@@ -112,10 +122,10 @@ class NameEntitySearch(ttk.Frame):
             # print(x)
             X += [x]
 
-            # TODO: X is a list (size of 5 grams * 100 dimensions) of each word
-            Y = self.checkAllNameEntities(X)
+        # TODO: X is a list (size of 5 grams * 100 dimensions) of each word
+        Y = self.checkAllNameEntities(X)
 
-            # TODO: highlight all name entities after apply neural network
+        # TODO: highlight all name entities after apply neural network
 
 
     def tokenize(self, text):

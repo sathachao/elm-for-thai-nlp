@@ -8,7 +8,8 @@ model = gensim.models.Word2Vec.load('vectors_0.0.1.model')
 
 print(model)
 
-pprint(model.most_similar(['ที่'], topn=10))
+pprint(model.most_similar(['เพลง'], topn=10))
+pprint(model.most_similar(['อาหาร'], topn=10))
 
 questions = ['มะละกอ ทุเรียน เห็ด องุ่น',
              'โต๊ะ แกง เก้าอี้ เตียง',
