@@ -1,8 +1,10 @@
 from tkinter import *
 from tkinter import ttk
 
-from tokerynx.tokenizian import Tokenizian
+from ThaiVectors.ELMTraining.elmmain import ELMModel
+from NameEntitySearch.tokerynx.tokenizian import Tokenizian
 import gensim
+import numpy as np
 
 class NameEntitySearch(ttk.Frame):
 
@@ -15,6 +17,8 @@ class NameEntitySearch(ttk.Frame):
 
         self.model = gensim.models.Word2Vec.load('thaivectors/vectors_0.0.1.model')
         self.tokenizer = Tokenizian(dictionary=list(self.model.vocab))
+        self.elmModel = ELMModel(False, 500, 2, 1, 1000)
+        self.elmModel.load('../ThaiVectors/ELMTraining/elmModel')
 
         self.create_widgets()
 
@@ -78,54 +82,58 @@ class NameEntitySearch(ttk.Frame):
         btn.pack(in_=f, side=TOP, padx=10, pady=10)
 
     def updateText(self, evt=None):
+        self.reset_highlight()
         raw_text = self.text.get('1.0', 'end-1c')
         if raw_text == self.prevText:
             return
         self.prevText = raw_text
 
-        tokenized = self.tokenize(raw_text)
-        print(tokenized)
+        raw_texts = raw_text.split('\n')
+        self.searchingOffset = 0 # increase by raw_text for highlight newline correctly (line counter)
+        for raw_text in raw_texts:
+            self.searchingOffset += 1
+            tokenized = self.tokenize(raw_text)
+            print(tokenized)
 
-        if len(tokenized) >= 1 and len(tokenized[0]) >= 1:
-            document = tokenized[0]
-        else:
-            return
+            if len(tokenized) >= 1 and len(tokenized[0]) >= 1:
+                document = tokenized[0]
+            else:
+                continue
 
-        modelDimension = len(self.model[document[0]].tolist())
-        X = [] # Input
-        x = []
-        left = 2
-        right = 2
-        for i in range(len(document)):
+            modelDimension = len(self.model[document[0]].tolist())
+            X = [] # Input
             x = []
-            for j in range(left, 0, -1):
-                if i - j < 0:
-                    # x += [const.BLANK]
-                    x += [0.]*modelDimension
-                    # y += [0]
-                else:
-                    # x += [document[i-j][0]]
-                    x += self.model[document[i - j]].tolist()
-                    # y += [document[i-j][1]]
-            # x += [document[i][0]]
-            x += self.model[document[i]].tolist()
-            for j in range(1, right + 1):
-                if i + j >= len(document):
-                    # x += [const.BLANK]
-                    x += [0.]*modelDimension
-                    # y += [0]
-                else:
-                    # x += [document[i + j][0]]
-                    x += self.model[document[i + j]].tolist()
-                    # y += [document[i + j][1]]
-            # print(len(x))
-            # print(x)
-            X += [x]
+            left = 2
+            right = 2
+            self.tokenizedText = document
+            for i in range(len(document)):
+                x = []
+                for j in range(left, 0, -1):
+                    if i - j < 0:
+                        # x += [const.BLANK]
+                        x += [0.]*modelDimension
+                        # y += [0]
+                    else:
+                        # x += [document[i-j][0]]
+                        x += self.model[document[i - j]].tolist()
+                        # y += [document[i-j][1]]
+                # x += [document[i][0]]
+                x += self.model[document[i]].tolist()
+                for j in range(1, right + 1):
+                    if i + j >= len(document):
+                        # x += [const.BLANK]
+                        x += [0.]*modelDimension
+                        # y += [0]
+                    else:
+                        # x += [document[i + j][0]]
+                        x += self.model[document[i + j]].tolist()
+                        # y += [document[i + j][1]]
+                # print(len(x))
+                # print(x)
+                X += [x]
 
-        # TODO: X is a list (size of 5 grams * 100 dimensions) of each word
-        Y = self.checkAllNameEntities(X)
+            self.checkAllNameEntities(X)
 
-        # TODO: highlight all name entities after apply neural network
 
 
     def tokenize(self, text):
@@ -133,18 +141,27 @@ class NameEntitySearch(ttk.Frame):
         return self.tokenizer.longestMatchingTokenizations
 
     def checkAllNameEntities(self, X):
-        Y = []
-
+        i = 0
         for x in X:
             y = self.checkNameEntity(x)
-            Y += [y]
-
-        return Y
+            if y == 1:
+                self.highlightText(i)
+            i += 1
 
     def checkNameEntity(self, x):
-        y = [] # TODO: pass x into neural network and return result y
-        return y
+        X = np.asarray(x)
+        X = X[np.newaxis]
+        yPredicted = self.elmModel.model.predict(X)
+        return np.argmax(yPredicted)
 
+    def highlightText(self, idx):
+        startIdx = 0
+        for i in range(0, idx):
+            startIdx += len(self.tokenizedText[i])
+        endIdx = startIdx + len(self.tokenizedText[idx])
+        self.highlight_txt_at(str(self.searchingOffset) + '.' + str(startIdx),
+                              str(self.searchingOffset) + '.' + str(endIdx))
+        print('HL from', startIdx, 'to', endIdx)
 
 if __name__ == '__main__':
     NameEntitySearch().mainloop()

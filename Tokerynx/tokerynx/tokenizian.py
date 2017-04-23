@@ -1,5 +1,5 @@
-from dictionaries.allList import wordlist
-from dictionaries.allList import symbollist
+from Tokerynx.dictionaries.allList import wordlist
+from Tokerynx.dictionaries.allList import symbollist
 
 englishcharlist = list(chr(i) for i in range(ord('A'),ord('Z')+1)) + list(chr(i) for i in range(ord('a'),ord('z')+1))
 numbercharlist = list(chr(i) for i in range(ord('0'),ord('9')+1))
