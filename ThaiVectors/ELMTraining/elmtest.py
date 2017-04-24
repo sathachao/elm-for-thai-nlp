@@ -24,7 +24,7 @@ for row in reader:
     if i >= readerLength:
         break
 
-x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.8)
+x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
 
 cm = elmModel.test(x_test, y_test)
 print(cm[0][1] / (cm[0][0] + cm[0][1]))

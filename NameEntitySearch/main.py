@@ -16,9 +16,10 @@ class NameEntitySearch(ttk.Frame):
         self.text = None
 
         self.model = gensim.models.Word2Vec.load('thaivectors/vectors_0.0.1.model')
-        self.tokenizer = Tokenizian(dictionary=list(self.model.vocab))
+        self.tokenizer = Tokenizian(dictionary=list(self.model.wv.vocab))
         self.elmModel = ELMModel(False, 500, 2, 1, 1000)
-        self.elmModel.load('../ThaiVectors/ELMTraining/elmModel')
+        # self.elmModel.load('../ThaiVectors/ELMTraining/elmModel')
+        self.elmModel.load('elmModel')
 
         self.create_widgets()
 
@@ -82,11 +83,11 @@ class NameEntitySearch(ttk.Frame):
         btn.pack(in_=f, side=TOP, padx=10, pady=10)
 
     def updateText(self, evt=None):
-        self.reset_highlight()
         raw_text = self.text.get('1.0', 'end-1c')
         if raw_text == self.prevText:
             return
         self.prevText = raw_text
+        self.reset_highlight()
 
         raw_texts = raw_text.split('\n')
         self.searchingOffset = 0 # increase by raw_text for highlight newline correctly (line counter)

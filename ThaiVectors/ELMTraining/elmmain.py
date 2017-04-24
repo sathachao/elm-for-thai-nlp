@@ -29,7 +29,7 @@ if __name__ == '__main__':
     ########Example for ELM
     import csv
     reader = csv.reader(open('../datasets/nnIO.all'), delimiter=' ')
-    readerLength = 10000
+    readerLength = 400000
 
     X = np.zeros((readerLength, 500), dtype=np.float)
     Y = np.zeros((readerLength, 2), dtype=np.int)
